@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\Class1.cs" />
     <Compile Include="Models\Instrument.cs" />
     <Compile Include="Models\InstrumentList.cs" />
     <Compile Include="Models\Order.cs" />
@@ -140,8 +141,8 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PositionsPage.xaml.cs">
-      <DependentUpon>PositionsPage.xaml</DependentUpon>
+    <Compile Include="Views\TradesPage.xaml.cs">
+      <DependentUpon>TradesPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -197,7 +198,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PositionsPage.xaml">
+    <Page Include="Views\TradesPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

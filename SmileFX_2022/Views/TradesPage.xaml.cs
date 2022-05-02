@@ -20,9 +20,9 @@ namespace SmileFX_2022.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PositionsPage : Page
+    public sealed partial class TradesPage : Page
     {
-        public PositionsPage()
+        public TradesPage()
         {
             this.InitializeComponent();
         }
