@@ -1,0 +1,58 @@
+﻿<Page
+    x:Class="SmileFX_2022.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmileFX_2022.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:SmileFX_2022.ViewModels"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.DataContext>
+        <vm:MainPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    
+    <Grid x:Name="ParentGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <MenuBar Grid.Row="0">
+            <MenuBarItem Title="File">
+                <MenuFlyoutItem Text="New"/>
+                <MenuFlyoutItem Text="Open..."/>
+                <MenuFlyoutItem Text="Save"/>
+                <MenuFlyoutItem Text="Exit"/>
+            </MenuBarItem>
+
+            <MenuBarItem Title="Edit">
+                <MenuFlyoutItem Text="Add" Click="MenuFlyoutItem_Click"/>
+                <MenuFlyoutItem Text="Undo"/>
+                <MenuFlyoutItem Text="Cut"/>
+                <MenuFlyoutItem Text="Copy"/>
+                <MenuFlyoutItem Text="Paste"/>
+            </MenuBarItem>
+
+            <MenuBarItem Title="Help">
+                <MenuFlyoutItem Text="About"/>
+            </MenuBarItem>
+        </MenuBar>
+
+        <ListView Grid.Row="1" ItemsSource="{Binding Instruments}" 
+                  IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding instrument}"/>
+                        <TextBlock Text="{Binding Granularity}"/>
+                        <TextBlock Text="Close price: "/>
+                        <TextBlock Text="{Binding Candles[0].mid.Close}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</Page>
