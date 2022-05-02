@@ -1,5 +1,5 @@
 ﻿<Page
-    x:Class="SmileFX_2022.Views.AddPositionPage"
+    x:Class="SmileFX_2022.Views.CreateOrderPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:SmileFX_2022.Views"
@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <vm:AddPositionPageViewModel/>
+        <vm:CreateOrderViewModel/>
     </Page.DataContext>
 
     <Grid>

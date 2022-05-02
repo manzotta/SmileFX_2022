@@ -6,70 +6,46 @@ using System.Threading.Tasks;
 
 namespace SmileFX_2022.Models
 {
+
+
     public class Position
     {
-
-        private Instrument underlyingInstrument;
-        public Instrument UnderlyingInstrument { get => underlyingInstrument; set => underlyingInstrument = value; }
-
-        private PositionType positionType;
-        public PositionType PositionType { get => positionType; set => positionType = value; }
-
-        private double strikePrice;
-        public double StrikePrice { get => strikePrice; set => strikePrice = value; }
-
-        private double lotSize;
-        public double LotSize { get => lotSize; set => lotSize = value; }
-
-        private bool isOpen;
-        public bool IsOpen { get => isOpen; set => isOpen = value; }
-
-        private double currentValue;
-        public double CurrentValue { get => currentValue; set => currentValue = value; }
-
-        private double finalValue;
-        public double FinalValue { get => finalValue; set => finalValue = value; }
-
-
-        // private String details;
-
-
-        public Position(Instrument underlyingInstrument, PositionType positionType, double lotSize)
-        {
-            this.UnderlyingInstrument = underlyingInstrument;
-            this.PositionType = positionType;
-            this.LotSize = lotSize;
-            this.IsOpen = true;
-            this.CurrentValue = 0.0;
-
-        }
-
-
-
-        /*
-        public void updatePosValue()
-        {
-        if (this.type == PosType.BUY)
-            currentValue = (underlyingInst.price!! - openPrice!!) * 100000 * lotSize;
-        else if (this.type == PosType.SELL)
-            currentValue = (openPrice!! - underlyingInst.price!!) * 100000 * lotSize;
-        }
-
-
-        fun updatePosValueV2(instrument: Instrument) {
-        if (this.type == PosType.BUY)
-            currentValue = (instrument.price - openPrice) * 100000 * lotSize;
-        else if (this.type == PosType.SELL)
-            currentValue = (openPrice - instrument.price) * 100000 * lotSize;
-        }
-        */
-
+        public string instrument { get; set; }
+        public Long _long { get; set; }
+        public Short _short { get; set; }
+        public string pl { get; set; }
+        public string resettablePL { get; set; }
+        public string financing { get; set; }
+        public string commission { get; set; }
+        public string dividendAdjustment { get; set; }
+        public string guaranteedExecutionFees { get; set; }
+        public string unrealizedPL { get; set; }
+        public string marginUsed { get; set; }
     }
 
-    public enum PositionType
+    public class Long
     {
-        BUY,
-        SELL
+        public string units { get; set; }
+        public string averagePrice { get; set; }
+        public string pl { get; set; }
+        public string resettablePL { get; set; }
+        public string financing { get; set; }
+        public string dividendAdjustment { get; set; }
+        public string guaranteedExecutionFees { get; set; }
+        public string[] tradeIDs { get; set; }
+        public string unrealizedPL { get; set; }
     }
+
+    public class Short
+    {
+        public string units { get; set; }
+        public string pl { get; set; }
+        public string resettablePL { get; set; }
+        public string financing { get; set; }
+        public string dividendAdjustment { get; set; }
+        public string guaranteedExecutionFees { get; set; }
+        public string unrealizedPL { get; set; }
+    }
+
 
 }

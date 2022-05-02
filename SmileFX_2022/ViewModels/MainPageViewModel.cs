@@ -69,7 +69,7 @@ namespace SmileFX_2022.ViewModels
 
         public void NavigateToAddPosition(Instrument inst)
         {
-            NavigationService.Navigate(typeof(AddPositionPage), inst);
+            NavigationService.Navigate(typeof(CreateOrderPage), inst);
         }
 
     }

@@ -1,4 +1,6 @@
-﻿using SmileFX_2022.Services;
+﻿using SmileFX_2022.Models;
+using SmileFX_2022.Services;
+using SmileFX_2022.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +20,7 @@ namespace SmileFX_2022.ViewModels
         //  which states how much of the quote currency is required to buy one unit of the base currency.
 
         private string baseCurrency;
-
+        
         public string BaseCurrency
         {
             get { return baseCurrency; }
@@ -54,13 +56,9 @@ namespace SmileFX_2022.ViewModels
             InstrumentService.Instance.AddInstrument($"{BaseCurrency}_{QuoteCurrency}");
 
             // Esetleg ilyenkor vissza lehetne navigálni a főoldalra(?)
+            NavigationService.Navigate(typeof(MainPage));
 
         }
-
-        //{
-        //    MainPage. .AddItem(Title, Description);
-        //    // await Navigation.PopAsync(true);
-        //}
 
     }
 

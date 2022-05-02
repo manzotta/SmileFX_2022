@@ -9,7 +9,7 @@ using Windows.UI.Xaml.Navigation;
 
 namespace SmileFX_2022.ViewModels
 {
-    public class AddPositionPageViewModel : ViewModelBase
+    public class CreateOrderViewModel : ViewModelBase
     {
         private string baseCurrency;
 

@@ -9,7 +9,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SmileFX_2022.Services
-{
+{   
+    // Elég alaposan át kell írni és ki kell bővíteni...
     public class NetworkService
     {
 
