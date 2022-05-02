@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <vm:CreateOrderViewModel/>
+        <vm:CreateOrderPageViewModel/>
     </Page.DataContext>
 
     <Grid>
@@ -33,8 +33,8 @@
             <x:String>Sell</x:String>
         </ComboBox>
 
-        <Button Grid.Row="4" Style="{StaticResource AccentButtonStyle}" Content="Add Position" 
-                Command="{Binding AddInstrumentCommand}"
+        <Button Grid.Row="4" Style="{StaticResource AccentButtonStyle}" Content="Create Order" 
+                Command="{Binding CreateOrderCommand}"
                 Margin="0,20,0,0" HorizontalAlignment="Center" />
 
     </Grid>

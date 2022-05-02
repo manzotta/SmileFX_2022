@@ -72,6 +72,13 @@ namespace SmileFX_2022.ViewModels
             NavigationService.Navigate(typeof(CreateOrderPage), inst);
         }
 
+
+        public void NavigateToTrades()
+        {
+            NavigationService.Navigate(typeof(TradesPage));
+        }
+
+
     }
 
 }

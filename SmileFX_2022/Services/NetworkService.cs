@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,8 +17,9 @@ namespace SmileFX_2022.Services
 
         // private readonly Uri serverUrl = new Uri("https://api-fxtrade.oanda.com/v3/instruments/");
 
-        private readonly Uri serverUrl = new Uri("https://api-fxpractice.oanda.com/v3/accounts/101-004-17118873-001/instruments/");
+        private readonly Uri serverUrl = new Uri("https://api-fxpractice.oanda.com/v3/accounts/");
 
+        private readonly string account = "101-004-17118873-001";
 
         private readonly string token = "aa8a0d297459c8aa6ad774f10e2a0f5e-b7e114be1f65321b394a4ecf4f9255aa";
 
@@ -32,8 +34,26 @@ namespace SmileFX_2022.Services
 
         public async Task<Instrument> GetInstrumentAsync(string instrumentName, string granularity)
         {
-            return await GetAsync<Instrument>(new Uri(serverUrl, $"{instrumentName}/candles?" +
+            return await GetAsync<Instrument>(new Uri(serverUrl, $"{this.account}/instruments/{instrumentName}/candles?" +
                 $"granularity={granularity}&count=1"));
+        }
+
+
+        public class TradesResponse
+        {
+            public List<Trade> Trades { get; set; } 
+        }
+
+        public async Task<TradesResponse> GetTradesAsync()
+        {
+            return await GetAsync<TradesResponse>(new Uri(serverUrl, $"{this.account}/trades"));
+        }
+
+
+        public async Task<HttpResponseMessage> PostOrder(HttpContent content)
+        {
+
+            return await PostAsync<Order>(new Uri("https://api-fxpractice.oanda.com/v3/accounts/101-004-17118873-001/orders"), content);
         }
 
 
@@ -51,13 +71,19 @@ namespace SmileFX_2022.Services
             }
         }
 
+        
 
-        private async void PostAsync<T>(Uri uri, HttpContent content)
+
+        private async Task<HttpResponseMessage> PostAsync<T>(Uri uri, HttpContent content)
         {
             using (var client = new System.Net.Http.HttpClient())
             {
+                var contentType = new MediaTypeWithQualityHeaderValue("application/json");
+                client.DefaultRequestHeaders.Accept.Add(contentType);
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
                 var response = await client.PostAsync(uri, content);
-
+                return response;
+                
             }
         }
 

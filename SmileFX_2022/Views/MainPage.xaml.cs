@@ -38,6 +38,11 @@ namespace SmileFX_2022.Views
             Instrument inst = (Instrument)e.ClickedItem;
             ViewModel.NavigateToAddPosition(inst);
         }
+
+        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            ViewModel.NavigateToTrades();
+        }
     }
 
 }

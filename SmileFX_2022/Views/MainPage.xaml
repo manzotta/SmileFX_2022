@@ -30,7 +30,7 @@
             <MenuBarItem Title="Edit">
                 <MenuFlyoutItem Text="Add" Click="MenuFlyoutItem_Click"/>
                 <MenuFlyoutItem Text="Undo"/>
-                <MenuFlyoutItem Text="Cut"/>
+                <MenuFlyoutItem Text="Cut" Click="MenuFlyoutItem_Click_1"/>
                 <MenuFlyoutItem Text="Copy"/>
                 <MenuFlyoutItem Text="Paste"/>
             </MenuBarItem>
