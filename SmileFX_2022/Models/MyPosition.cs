@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmileFX_2022.Models
 {
+    // Leginkább a Trade-hez áll közel...
     public class MyPosition
     {
 
