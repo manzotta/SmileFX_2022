@@ -56,14 +56,13 @@ namespace SmileFX_2022.ViewModels
 
         private async void CreateOrder()
         {
-            Order myOrder = new Order
-            {
+            OrderContent myOrder = new OrderContent { order = new Order {
                 instrument = "USD_JPY",
                 units = "1",
                 timeInForce = "FOK",
                 type = "MARKET",
                 positionFill = "DEFAULT"
-            };
+            }};
 
             // JsonContent myContent = JsonContent.Create(myOrder);
 
@@ -71,9 +70,10 @@ namespace SmileFX_2022.ViewModels
 
             var stringContent = new StringContent(myContent, UnicodeEncoding.UTF8, "application/json");
 
-            // var service = new NetworkService();
             // var buffer = System.Text.Encoding.UTF8.GetBytes(myContent);
             // var byteContent = new ByteArrayContent(buffer);
+            
+            var service = new NetworkService();
             HttpResponseMessage message = await service.PostOrder(stringContent);
 
             // InstrumentService.Instance.AddInstrument($"{BaseCurrency}_{QuoteCurrency}");

@@ -53,7 +53,7 @@ namespace SmileFX_2022.Services
         public async Task<HttpResponseMessage> PostOrder(HttpContent content)
         {
 
-            return await PostAsync<Order>(new Uri("https://api-fxpractice.oanda.com/v3/accounts/101-004-17118873-001/orders"), content);
+            return await PostAsync<OrderContent>(new Uri("https://api-fxpractice.oanda.com/v3/accounts/101-004-17118873-001/orders"), content);
         }
 
 
