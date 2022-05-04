@@ -23,12 +23,13 @@
         </Grid.RowDefinitions>
 
         <TextBox Grid.Row="1" Header="Base currency:" PlaceholderText="GBP" 
-                 Text="{Binding BaseCurrency, Mode=TwoWay}" Margin="0,20,0,0" />
+                 Text="{Binding BaseCurrency, Mode=TwoWay}" Margin="10,10,10,0" />
 
         <TextBox Grid.Row="2" Header="Quote currency:"
-                 Text="{Binding QuoteCurrency, Mode=TwoWay}" PlaceholderText="USD" Margin="0,20,0,0" />
+                 Text="{Binding QuoteCurrency, Mode=TwoWay}" PlaceholderText="USD" Margin="10,10,10,0" />
 
         <Button Grid.Row="3" Style="{StaticResource AccentButtonStyle}" Content="Add Instrument" 
+                FontSize="16" FontWeight="Bold" 
                 Command="{Binding AddInstrumentCommand}"
                 Margin="0,20,0,0" HorizontalAlignment="Center" />
 

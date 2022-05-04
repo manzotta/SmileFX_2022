@@ -23,17 +23,19 @@
         </Grid.RowDefinitions>
 
         <TextBox Grid.Row="1" Header="Base currency:" PlaceholderText="" 
-                 Text="{Binding BaseCurrency, Mode=TwoWay}" Margin="0,20,0,0" />
+                 Text="{Binding BaseCurrency, Mode=TwoWay}" Margin="10,10,10,0" />
 
         <TextBox Grid.Row="2" Header="Quote currency:"
-                 Text="{Binding QuoteCurrency, Mode=TwoWay}" PlaceholderText="" Margin="0,20,0,0" />
+                 Text="{Binding QuoteCurrency, Mode=TwoWay}" PlaceholderText="" Margin="10,10,10,0" />
 
-        <ComboBox Grid.Row="3" Header="Position Type" PlaceholderText="Define Position Type" Width="200">
-            <x:String>Buy</x:String>
-            <x:String>Sell</x:String>
+        <ComboBox Grid.Row="3" Header="Position Type" SelectedItem="{Binding PosType, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  PlaceholderText="Define Position Type" Width="200" Margin="10,10,0,0">
+            <ComboBoxItem>Long</ComboBoxItem>
+            <ComboBoxItem>Short</ComboBoxItem>
         </ComboBox>
 
         <Button Grid.Row="4" Style="{StaticResource AccentButtonStyle}" Content="Create Order" 
+                FontSize="16" FontWeight="Bold" 
                 Command="{Binding CreateOrderCommand}"
                 Margin="0,20,0,0" HorizontalAlignment="Center" />
 

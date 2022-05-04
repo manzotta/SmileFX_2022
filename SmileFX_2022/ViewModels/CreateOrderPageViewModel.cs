@@ -33,6 +33,17 @@ namespace SmileFX_2022.ViewModels
         }
 
 
+        private string posType;
+
+        public string PosType
+        {
+            get { return posType; }
+            set { Set(ref posType, value); }
+        }
+
+
+
+
         public DelegateCommand CreateOrderCommand { get; }
 
 

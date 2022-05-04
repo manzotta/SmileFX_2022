@@ -69,8 +69,8 @@ namespace SmileFX_2022.Models
 
     public enum PositionType
     {
-        BUY,
-        SELL
+        LONG,
+        SHORT
     }
 
 }
