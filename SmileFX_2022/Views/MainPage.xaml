@@ -5,8 +5,9 @@
     xmlns:local="using:SmileFX_2022.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:chart="using:Syncfusion.UI.Xaml.Charts"
     mc:Ignorable="d"
-    xmlns:vm="using:SmileFX_2022.ViewModels"
+    xmlns:vm="using:SmileFX_2022.ViewModels" 
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
@@ -16,43 +17,76 @@
     <Grid x:Name="ParentGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <MenuBar Grid.Row="0">
-            <MenuBarItem Title="File">
-                <MenuFlyoutItem Text="New"/>
-                <MenuFlyoutItem Text="Open..."/>
-                <MenuFlyoutItem Text="Save"/>
-                <MenuFlyoutItem Text="Exit"/>
-            </MenuBarItem>
+        <Pivot Grid.Row="0" Grid.ColumnSpan="2">
+            <PivotItem Header="Instruments">
+                <local:MainPage></local:MainPage>
+            </PivotItem>
+            <PivotItem Header="Positions" >
+                <local:TradesPage></local:TradesPage>
+            </PivotItem>
+                        
+        </Pivot>
 
-            <MenuBarItem Title="Edit">
-                <MenuFlyoutItem Text="Add" Click="MenuFlyoutItem_Click"/>
-                <MenuFlyoutItem Text="Undo"/>
-                <MenuFlyoutItem Text="Cut" Click="MenuFlyoutItem_Click_1"/>
-                <MenuFlyoutItem Text="Copy"/>
-                <MenuFlyoutItem Text="Paste"/>
-            </MenuBarItem>
+        <CommandBar Grid.Row="0" Grid.Column="3" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Right" Width="Auto">
+            <AppBarButton Icon="Add" Label="Add"/>
+            <AppBarButton Icon="Save" Label="Save"/>
+        </CommandBar>
 
-            <MenuBarItem Title="Help">
-                <MenuFlyoutItem Text="About"/>
-            </MenuBarItem>
-        </MenuBar>
 
-        <ListView Grid.Row="1" ItemsSource="{Binding Instruments}" 
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Instrument" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="Close price" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+        <TextBlock Grid.Row="1" Grid.Column="2" Text="Granularity" Margin="0,10,0,0" HorizontalAlignment="Center"/>
+
+        <ListView Grid.Row="2" Grid.Column="0" ItemsSource="{Binding Instruments}" 
                   IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,20,0,0">
+                    <StackPanel Orientation="Vertical" Width="Auto" Margin="0,20,0,0">
                         <TextBlock Text="{Binding instrument}"/>
-                        <TextBlock Text="{Binding Granularity}"/>
-                        <TextBlock Text="Close price: "/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ListView Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Instruments}" 
+                  IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Width="Auto" Margin="0,20,0,0">
+                        
                         <TextBlock Text="{Binding Candles[0].mid.Close}"/>
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
 
+        <ListView Grid.Row="2" Grid.Column="2" ItemsSource="{Binding Instruments}" 
+                  IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical" Width="Auto" Margin="0,20,0,0">
+                        <TextBlock Text="{Binding Granularity}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
     </Grid>
+
+
+
 </Page>

@@ -22,6 +22,9 @@ namespace SmileFX_2022.ViewModels
         public ObservableCollection<Instrument> Instruments { get; set; }
             = new ObservableCollection<Instrument>();
 
+        // A charthoz
+        public ObservableCollection<CandleChartModel> StockPriceDetails = new ObservableCollection<CandleChartModel>();
+
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
@@ -33,30 +36,22 @@ namespace SmileFX_2022.ViewModels
                 Instruments.Add(instItem);
             }
 
+            int siz = Instruments[0].Candles.Count;
+
+            for (int i = 0; i < siz; i++)
+            {
+                this.StockPriceDetails.Add(new CandleChartModel() {
+                    Date = DateTime.Parse(Instruments[0].Candles[0].time),
+                    Open = Double.Parse(Instruments[0].Candles[0].mid.Open),
+                    High = Double.Parse(Instruments[0].Candles[0].mid.High),
+                    Low = Double.Parse(Instruments[0].Candles[0].mid.Low),
+                    Close = Double.Parse(Instruments[0].Candles[0].mid.Close)
+                });
+            }
+
             await base.OnNavigatedToAsync(parameter, mode, state);
 
         }
-
-
-        //public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
-        //{
-        //    var service = new NetworkService();
-        //    var recipeGroups = await service.GetRecipeGroupsAsync();
-
-        //    foreach (var item in recipeGroups)
-        //    {
-        //        Instruments.Add(item);
-        //    }
-        //    await base.OnNavigatedToAsync(parameter, mode, state);
-        //}
-
-
-        //public MainPageViewModel(INavigationService navigationService)
-        //{
-        //    _navigationService = navigationService;
-
-        //    // AddInstrumentCommand = new RelayCommand()
-        //}
 
 
         // A MainPage oldalról navigálhatunk egyrészt az AddPosition, másrészt az AddInstrument oldalakra

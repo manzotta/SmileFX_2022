@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\CandleChartModel.cs" />
     <Compile Include="Models\OrderContent.cs" />
     <Compile Include="Models\OrderResult.cs" />
     <Compile Include="Models\Trade.cs" />
@@ -178,6 +179,9 @@
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
       <Version>9.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Syncfusion.SfChart.UWP">
+      <Version>20.1.0.55</Version>
     </PackageReference>
     <PackageReference Include="Template10">
       <Version>1.1.12</Version>

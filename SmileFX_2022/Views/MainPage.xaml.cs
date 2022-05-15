@@ -23,6 +23,8 @@ namespace SmileFX_2022.Views
         public MainPage()
         {
             InitializeComponent();
+            //MainPage.Navigate(typeof(MainPage));
+            //TradesPage.Navigate(typeof(TradesPage));
         }
 
 
