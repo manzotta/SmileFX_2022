@@ -51,6 +51,7 @@ namespace SmileFX_2022.ViewModels
             await base.OnNavigatedToAsync(parameter, mode, state);
         }
 
+
         private void AddNewInstrument()
         {
             InstrumentService.Instance.AddInstrument($"{BaseCurrency}_{QuoteCurrency}");

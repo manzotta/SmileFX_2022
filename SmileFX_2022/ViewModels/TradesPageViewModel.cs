@@ -13,8 +13,11 @@ namespace SmileFX_2022.ViewModels
 {
     public class TradesPageViewModel : ViewModelBase
     {
+        
         public ObservableCollection<Trade> Trades { get; set; }
             = new ObservableCollection<Trade>();
+
+
 
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
@@ -32,5 +35,27 @@ namespace SmileFX_2022.ViewModels
         }
 
 
+
+        public async Task Refresh()
+        {
+            var service = new NetworkService();
+            var tradeList = await service.GetTradesAsync();
+
+            ObservableCollection<Trade> NewTrades = new ObservableCollection<Trade>();
+
+            foreach (var tradeItem in tradeList.Trades.OrderBy(x => x.id))
+            {
+                NewTrades.Add(tradeItem);
+            }
+
+            Trades.Clear();
+
+            foreach (var item in NewTrades)
+            {
+                Trades.Add(item);
+            }
+        }
+ 
+    
     }
 }

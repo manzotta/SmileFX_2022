@@ -73,6 +73,7 @@ namespace SmileFX_2022.ViewModels
             NavigationService.Navigate(typeof(TradesPage));
         }
 
+
         public async void Refresh()
         {
             var service = new NetworkService();
@@ -92,6 +93,12 @@ namespace SmileFX_2022.ViewModels
             foreach (var item in NewInstruments)
             {
                 Instruments.Add(item);
+                
+                // Instruments
+                // aaahttps://stackoverflow.com/questions/49226894/writing-observablecollection-to-json-file
+                // File.WriteAllText(@"./MainDataContext" + ".json", JsonConvert.SerializeObject(DataContext));
+
+
             }
 
         }

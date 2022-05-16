@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <vm:TradesPageViewModel/>
+        <vm:TradesPageViewModel x:Name="TradesVM"/>
     </Page.DataContext>
     
     <Grid Background="White" x:Name="ParentGrid">
@@ -29,6 +29,7 @@
         <CommandBar Grid.Row="0" Grid.Column="3" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Right" Width="Auto">
             <AppBarButton Icon="Add" Label="Add"/>
             <AppBarButton Icon="Save" Label="Save"/>
+            <AppBarButton Icon="Refresh" Click="RefreshButton_Click"/>
         </CommandBar>
 
         <TextBlock Grid.Row="0" Grid.Column="0" Text="Trade Id" Margin="10,20,0,0" HorizontalAlignment="Left"/>
