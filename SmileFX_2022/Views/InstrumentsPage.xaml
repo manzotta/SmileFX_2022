@@ -1,0 +1,70 @@
+﻿<Page
+    x:Class="SmileFX_2022.Views.InstrumentsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SmileFX_2022.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    xmlns:vm="using:SmileFX_2022.ViewModels" 
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+
+    <Page.DataContext>
+        <vm:InstrumentsPageViewModel x:Name="InstrumentsVM"/>
+    </Page.DataContext>
+
+
+    <Grid x:Name="ParentGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="120"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+
+        <CommandBar Grid.Row="0" Grid.Column="7" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Right" Width="Auto">
+            <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
+            <AppBarButton Icon="Save" Label="Save"/>
+            <AppBarButton Icon="Refresh" Click="RefreshButton_Click"/>
+        </CommandBar>
+
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Instrument" Margin="10,10,0,0" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Close price" Margin="10,10,0,0" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Granularity" Margin="10,10,0,0" HorizontalAlignment="Left"/>
+
+        <ListView Grid.Row="1" Grid.ColumnSpan="3"  ItemsSource="{Binding Instruments}" 
+                  IsItemClickEnabled="True" ItemClick="ListView_ItemClick">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding instrument}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Candles[0].mid.Close}"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Granularity}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+
+    </Grid>
+
+</Page>

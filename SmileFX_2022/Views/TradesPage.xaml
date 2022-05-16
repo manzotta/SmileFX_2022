@@ -13,45 +13,46 @@
         <vm:TradesPageViewModel/>
     </Page.DataContext>
     
-    <Grid x:Name="ParentGrid">
+    <Grid Background="White" x:Name="ParentGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-        <MenuBar Grid.Row="0">
-            <MenuBarItem Title="File">
-                <MenuFlyoutItem Text="New"/>
-                <MenuFlyoutItem Text="Open..."/>
-                <MenuFlyoutItem Text="Save"/>
-                <MenuFlyoutItem Text="Exit"/>
-            </MenuBarItem>
+        <CommandBar Grid.Row="0" Grid.Column="3" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Right" Width="Auto">
+            <AppBarButton Icon="Add" Label="Add"/>
+            <AppBarButton Icon="Save" Label="Save"/>
+        </CommandBar>
 
-            <MenuBarItem Title="Edit">
-                <MenuFlyoutItem Text="Add"/>
-                <MenuFlyoutItem Text="Undo"/>
-                <MenuFlyoutItem Text="Cut"/>
-                <MenuFlyoutItem Text="Copy"/>
-                <MenuFlyoutItem Text="Paste"/>
-            </MenuBarItem>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Trade Id" Margin="10,20,0,0" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Instrument" Margin="10,20,0,0" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Profit / Loss" Margin="10,20,0,0" HorizontalAlignment="Left"/>
 
-            <MenuBarItem Title="Help">
-                <MenuFlyoutItem Text="About"/>
-            </MenuBarItem>
-        </MenuBar>
-
-        <ListView Grid.Row="1" ItemsSource="{Binding Trades}">
+        <ListView Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Trades}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Margin="0,20,0,0">
-                        <TextBlock Text="{Binding instrument}" FontStyle="Normal"/>
-                        <TextBlock Text="{Binding id}"/>
-                        <TextBlock Text="Profit / Loss: "/>
-                        <TextBlock Text="{Binding unrealizedPL}"/>
-                    </StackPanel>
+                    <Grid Margin="0,20,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding id}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding instrument}" FontStyle="Normal"/>
+                        <TextBlock Grid.Column="2" Text="{Binding unrealizedPL}"/>
+                    </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        
 
     </Grid>
 </Page>

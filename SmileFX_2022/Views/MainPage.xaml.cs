@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Template10.Services.NavigationService;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -25,25 +26,52 @@ namespace SmileFX_2022.Views
             InitializeComponent();
             //MainPage.Navigate(typeof(MainPage));
             //TradesPage.Navigate(typeof(TradesPage));
+            
         }
 
 
         private void MenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            ViewModel.NavigateToAddInstrument();
+            MainVM.NavigateToAddInstrument();
         }
 
 
-        // Működik a paraméter átadás az egyes ViewModel-ek között
+        // Így működik a paraméter átadás az egyes ViewModel-ek között
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Instrument inst = (Instrument)e.ClickedItem;
-            ViewModel.NavigateToAddPosition(inst);
+            MainVM.NavigateToAddPosition(inst);
         }
 
         private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
         {
-            ViewModel.NavigateToTrades();
+            MainVM.NavigateToTrades();
+        }
+
+        
+
+        private void nvSample_Loaded(object sender, RoutedEventArgs e)
+        {
+            ContentFrame.Navigate(typeof(InstrumentsPage));
+            // NavigationService.Navigate(typeof (InstrumentsPage));
+            
+        }
+
+        private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        {
+            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
+
+            switch (item.Tag.ToString())
+            {
+                case "page1":
+                    ContentFrame.Navigate(typeof(InstrumentsPage));
+                    MainVM.NavigateToInstruments();
+                    break;
+                case "page2":
+                    ContentFrame.Navigate(typeof(TradesPage));
+                    MainVM.NavigateToTrades();
+                    break;
+            }
         }
     }
 

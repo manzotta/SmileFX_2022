@@ -34,7 +34,7 @@ namespace SmileFX_2022.Services
         public async Task<Instrument> GetInstrumentAsync(string instrumentName, string granularity)
         {
             return await GetAsync<Instrument>(new Uri(serverUrl, $"{this.account}/instruments/{instrumentName}/candles?" +
-                $"granularity={granularity}&count=20"));
+                $"granularity={granularity}&count=2"));
         }
 
 

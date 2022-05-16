@@ -26,5 +26,6 @@ namespace SmileFX_2022.Views
         {
             this.InitializeComponent();
         }
+
     }
 }

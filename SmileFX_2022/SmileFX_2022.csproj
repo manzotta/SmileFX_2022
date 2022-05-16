@@ -134,6 +134,7 @@
     <Compile Include="Services\TradeService.cs" />
     <Compile Include="ViewModels\AddInstrumentPageViewModel.cs" />
     <Compile Include="ViewModels\CreateOrderPageViewModel.cs" />
+    <Compile Include="ViewModels\InstrumentsPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\TradesPageViewModel.cs" />
     <Compile Include="Views\AddInstrumentPage.xaml.cs">
@@ -141,6 +142,9 @@
     </Compile>
     <Compile Include="Views\CreateOrderPage.xaml.cs">
       <DependentUpon>CreateOrderPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InstrumentsPage.xaml.cs">
+      <DependentUpon>InstrumentsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -198,6 +202,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\CreateOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\InstrumentsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

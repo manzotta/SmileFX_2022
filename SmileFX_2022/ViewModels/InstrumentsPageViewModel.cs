@@ -10,11 +10,10 @@ using System.Threading.Tasks;
 using Template10.Mvvm;
 using Windows.UI.Xaml.Navigation;
 
-namespace SmileFX_2022.ViewModels
+namespace SmileFX_2022.ViewModels 
 {
-    public class MainPageViewModel : ViewModelBase
+    public class InstrumentsPageViewModel : ViewModelBase
     {
-
         // Ez a kezdeti instrumentumok listája, ehhez lehet majd hozzáadni
         // public List<string> Names { get; set; } = new List<string>{ "EUR_USD", "USD_CHF", "AUD_USD" };
 
@@ -40,7 +39,8 @@ namespace SmileFX_2022.ViewModels
 
             for (int i = 0; i < siz; i++)
             {
-                this.StockPriceDetails.Add(new CandleChartModel() {
+                this.StockPriceDetails.Add(new CandleChartModel()
+                {
                     Date = DateTime.Parse(Instruments[0].Candles[0].time),
                     Open = Double.Parse(Instruments[0].Candles[0].mid.Open),
                     High = Double.Parse(Instruments[0].Candles[0].mid.High),
@@ -73,11 +73,27 @@ namespace SmileFX_2022.ViewModels
             NavigationService.Navigate(typeof(TradesPage));
         }
 
-        public void NavigateToInstruments()
+        public async void Refresh()
         {
-            NavigationService.Navigate(typeof(InstrumentsPage));
+            var service = new NetworkService();
+
+            ObservableCollection<Instrument> NewInstruments = new ObservableCollection<Instrument>();
+
+            //Instruments.Clear();
+
+            foreach (var instName in InstrumentService.Instance.GetAll())
+            {
+                var instItem = await service.GetInstrumentAsync(instName, "S5");
+                NewInstruments.Add(instItem);
+            }           
+            
+            Instruments.Clear();
+
+            foreach (var item in NewInstruments)
+            {
+                Instruments.Add(item);
+            }
+
         }
-
     }
-
 }
