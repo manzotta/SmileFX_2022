@@ -9,6 +9,7 @@ namespace SmileFX_2022.Services
     public class InstrumentService
     {
 
+
         public static InstrumentService Instance { get; } = new InstrumentService();
 
 

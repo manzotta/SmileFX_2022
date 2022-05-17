@@ -21,6 +21,7 @@ namespace SmileFX_2022.Views
 {
     public sealed partial class MainPage : Page
     {
+        
         public MainPage()
         {
             InitializeComponent();
@@ -30,32 +31,13 @@ namespace SmileFX_2022.Views
         }
 
 
-        private void MenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            MainVM.NavigateToAddInstrument();
-        }
-
-
-        // Így működik a paraméter átadás az egyes ViewModel-ek között
-        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            Instrument inst = (Instrument)e.ClickedItem;
-            MainVM.NavigateToAddPosition(inst);
-        }
-
-        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            MainVM.NavigateToTrades();
-        }
-
-        
-
         private void nvSample_Loaded(object sender, RoutedEventArgs e)
         {
             ContentFrame.Navigate(typeof(InstrumentsPage));
-            // NavigationService.Navigate(typeof (InstrumentsPage));
+            // MainVM.NavigateToInstruments();
             
         }
+
 
         private void nvSample_SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
@@ -73,6 +55,7 @@ namespace SmileFX_2022.Views
                     break;
             }
         }
+    
     }
 
 }

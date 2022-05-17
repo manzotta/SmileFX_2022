@@ -10,7 +10,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Page.DataContext>
-        <vm:CreateOrderPageViewModel/>
+        <vm:CreateOrderPageViewModel x:Name="CreateOrderVM"/>
     </Page.DataContext>
 
     <Grid>
@@ -22,13 +22,13 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBox Grid.Row="1" Header="Base currency:" PlaceholderText="" 
+        <TextBox Grid.Row="1" Header="Base currency:" PlaceholderText="GBP" 
                  Text="{Binding BaseCurrency, Mode=TwoWay}" Margin="10,10,10,0" />
 
         <TextBox Grid.Row="2" Header="Quote currency:"
-                 Text="{Binding QuoteCurrency, Mode=TwoWay}" PlaceholderText="" Margin="10,10,10,0" />
+                 Text="{Binding QuoteCurrency, Mode=TwoWay}" PlaceholderText="USD" Margin="10,10,10,0" />
 
-        <ComboBox Grid.Row="3" Header="Position Type" SelectedItem="{Binding PosType, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+        <ComboBox Grid.Row="3" Header="Position Type" SelectedItem="{Binding PosType, UpdateSourceTrigger=Default, Mode=TwoWay}"
                   PlaceholderText="Define Position Type" Width="200" Margin="10,10,0,0">
             <ComboBoxItem>Long</ComboBoxItem>
             <ComboBoxItem>Short</ComboBoxItem>

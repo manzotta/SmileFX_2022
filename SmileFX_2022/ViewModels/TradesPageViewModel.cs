@@ -1,5 +1,6 @@
 ﻿using SmileFX_2022.Models;
 using SmileFX_2022.Services;
+using SmileFX_2022.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,11 +15,13 @@ namespace SmileFX_2022.ViewModels
     public class TradesPageViewModel : ViewModelBase
     {
         
+        // Az ügyleteket tartalmazó ObservableCollection
         public ObservableCollection<Trade> Trades { get; set; }
             = new ObservableCollection<Trade>();
 
 
-
+        // Ez a függvény hívódik meg, ha az alkalmazásban a TradesPage-re navigálunk
+        // Ilyenkor a NetworkSerive GetTradesAsync() metódusát meghívva feltöltjük elemekkel a Trades propertyt
         public override async Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
             var service = new NetworkService();
@@ -35,7 +38,16 @@ namespace SmileFX_2022.ViewModels
         }
 
 
+        // A TradesPage oldalról a CreateOrderPage-re navigálunk
+        public void NavigateToCreateOrder()
+        {
+            NavigationService.Navigate(typeof(CreateOrderPage));
+        }
 
+
+        // Frissítjük az oldal tartalmát
+        // Ilyenkor a NetworkService-en keresztül frissítjük a Trades elemeinek,
+        // vagyis a nyitott ügyleteknek az értékét
         public async Task Refresh()
         {
             var service = new NetworkService();

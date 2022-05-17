@@ -27,7 +27,7 @@
         </Grid.ColumnDefinitions>
 
         <CommandBar Grid.Row="0" Grid.Column="3" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Right" Width="Auto">
-            <AppBarButton Icon="Add" Label="Add"/>
+            <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
             <AppBarButton Icon="Save" Label="Save"/>
             <AppBarButton Icon="Refresh" Click="RefreshButton_Click"/>
         </CommandBar>

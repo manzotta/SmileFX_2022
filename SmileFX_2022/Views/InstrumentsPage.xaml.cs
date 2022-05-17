@@ -28,32 +28,25 @@ namespace SmileFX_2022.Views
             this.InitializeComponent();
         }
 
-        private void MenuFlyoutItem_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
-        {
-            InstrumentsVM.NavigateToAddInstrument();
-        }
-
 
         // Működik a paraméter átadás az egyes ViewModel-ek között
         private void ListView_ItemClick(object sender, ItemClickEventArgs e)
         {
             Instrument inst = (Instrument)e.ClickedItem;
-            InstrumentsVM.NavigateToAddPosition(inst);
+            InstrumentsVM.NavigateToCreateOrder(inst);
         }
 
-        private void MenuFlyoutItem_Click_1(object sender, RoutedEventArgs e)
-        {
-            InstrumentsVM.NavigateToTrades();
-        }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             InstrumentsVM.NavigateToAddInstrument();
         }
 
+
         private void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
             InstrumentsVM.Refresh();
         }
+    
     }
 }

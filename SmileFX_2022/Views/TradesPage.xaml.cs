@@ -27,9 +27,14 @@ namespace SmileFX_2022.Views
             this.InitializeComponent();
         }
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
         {
-            TradesVM.Refresh();
+            await TradesVM.Refresh();
+        }
+
+        private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            TradesVM.NavigateToCreateOrder();
         }
     }
 }
