@@ -8,12 +8,15 @@ namespace SmileFX_2022.Services
 {
     public class InstrumentService
     {
+
         public static InstrumentService Instance { get; } = new InstrumentService();
+
 
         private List<string> instrumentList = new List<string>
         {
             "EUR_USD", "USD_CHF", "AUD_USD"
         };
+
 
         protected InstrumentService() { }
 
@@ -23,16 +26,11 @@ namespace SmileFX_2022.Services
             instrumentList.Add(name);
         }
 
-        //public TodoItem GetItem(int id)
-        //{
-        //    return items[id];
-        //}
 
         public List<string> GetAll()
         {
             return instrumentList;
         }
-
 
 
     }

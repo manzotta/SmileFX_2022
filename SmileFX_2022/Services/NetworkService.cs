@@ -10,25 +10,17 @@ using System.Threading.Tasks;
 
 namespace SmileFX_2022.Services
 {   
-    // Elég alaposan át kell írni és ki kell bővíteni...
+    
     public class NetworkService
     {
 
-        // private readonly Uri serverUrl = new Uri("https://api-fxtrade.oanda.com/v3/instruments/");
-
+     
         private readonly Uri serverUrl = new Uri("https://api-fxpractice.oanda.com/v3/accounts/");
 
         private readonly string account = "101-004-17118873-001";
 
         private readonly string token = "aa8a0d297459c8aa6ad774f10e2a0f5e-b7e114be1f65321b394a4ecf4f9255aa";
 
-
-        /*
-        public async Task<List<RecipeGroup>> GetRecipeGroupsAsync()
-        {
-            return await GetAsync<List<RecipeGroup>>(new Uri(serverUrl, "api/Recipes/Groups"));
-        }
-        */
 
 
         public async Task<Instrument> GetInstrumentAsync(string instrumentName, string granularity)
@@ -43,6 +35,7 @@ namespace SmileFX_2022.Services
             public List<Trade> Trades { get; set; } 
         }
 
+
         public async Task<TradesResponse> GetTradesAsync()
         {
             return await GetAsync<TradesResponse>(new Uri(serverUrl, $"{this.account}/trades"));
@@ -54,6 +47,7 @@ namespace SmileFX_2022.Services
 
             return await PostAsync<OrderContent>(new Uri("https://api-fxpractice.oanda.com/v3/accounts/101-004-17118873-001/orders"), content);
         }
+
 
 
         private async Task<T> GetAsync<T>(Uri uri)
@@ -71,7 +65,6 @@ namespace SmileFX_2022.Services
         }
 
         
-
 
         private async Task<HttpResponseMessage> PostAsync<T>(Uri uri, HttpContent content)
         {
