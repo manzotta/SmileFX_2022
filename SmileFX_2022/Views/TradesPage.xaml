@@ -28,13 +28,13 @@
 
         <CommandBar Grid.Row="0" Grid.Column="3" Background="Transparent" IsOpen="False" DefaultLabelPosition="Right" HorizontalAlignment="Right" Width="Auto">
             <AppBarButton Icon="Add" Label="Add" Click="AddButton_Click"/>
-            <AppBarButton Icon="Save" Label="Save"/>
-            <AppBarButton Icon="Refresh" Click="RefreshButton_Click"/>
+            <AppBarButton Icon="Save" Label="Save" Command="{Binding SaveCommand}"/>
+            <AppBarButton Icon="Refresh" Command="{Binding RefreshCommand}"/>
         </CommandBar>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Text="Trade Id" Margin="10,20,0,0" HorizontalAlignment="Left"/>
-        <TextBlock Grid.Row="0" Grid.Column="1" Text="Instrument" Margin="10,20,0,0" HorizontalAlignment="Left"/>
-        <TextBlock Grid.Row="0" Grid.Column="2" Text="Profit / Loss" Margin="10,20,0,0" HorizontalAlignment="Left"/>
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Trade Id" Margin="10,20,0,0" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="Instrument" Margin="10,20,0,0" HorizontalAlignment="Left" FontWeight="Bold"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" Text="Profit / Loss" Margin="10,20,0,0" HorizontalAlignment="Left" FontWeight="Bold"/>
 
         <ListView Grid.Row="1" Grid.ColumnSpan="3" ItemsSource="{Binding Trades}">
             <ListView.ItemTemplate>

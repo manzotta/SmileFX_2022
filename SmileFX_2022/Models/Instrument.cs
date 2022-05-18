@@ -11,7 +11,7 @@ namespace SmileFX_2022.Models
     {
         public List<Candle> Candles { get; set; }
         public string Granularity { get; set; }
-        public string instrument { get; set; } // Ezt nagy betűvel kellene... és akkor a modell osztályt is átneveztni
+        public string instrument { get; set; }  // Ezt nagy betűvel kellene... és akkor a modell osztályt is átneveztni
     }
 
     public class Candle

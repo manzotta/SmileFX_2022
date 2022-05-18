@@ -27,11 +27,7 @@ namespace SmileFX_2022.Views
             this.InitializeComponent();
         }
 
-        private async void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            await TradesVM.Refresh();
-        }
-
+        // Navigáció a CreateOrderPage-re
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             TradesVM.NavigateToCreateOrder();

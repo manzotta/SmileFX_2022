@@ -1,4 +1,5 @@
-﻿using SmileFX_2022.Models;
+﻿using Newtonsoft.Json;
+using SmileFX_2022.Models;
 using SmileFX_2022.Services;
 using SmileFX_2022.Views;
 using System;
@@ -14,7 +15,7 @@ namespace SmileFX_2022.ViewModels
 {
     public class TradesPageViewModel : ViewModelBase
     {
-        
+
         // Az ügyleteket tartalmazó ObservableCollection
         public ObservableCollection<Trade> Trades { get; set; }
             = new ObservableCollection<Trade>();
@@ -38,6 +39,20 @@ namespace SmileFX_2022.ViewModels
         }
 
 
+        public DelegateCommand SaveCommand { get; }
+
+        public DelegateCommand RefreshCommand { get; }
+
+
+        // Konstruktor, ahol a RefreshCommand metódusreferenciát a Refresh függvénnyel hozzuk létre,
+        // a SaveCommand metódusreferenciát pedig a Save függvénnyel hozzuk létre
+        public TradesPageViewModel()
+        {
+            SaveCommand = new DelegateCommand(Save);
+            RefreshCommand = new DelegateCommand(Refresh);
+        }
+
+
         // A TradesPage oldalról a CreateOrderPage-re navigálunk
         public void NavigateToCreateOrder()
         {
@@ -48,7 +63,7 @@ namespace SmileFX_2022.ViewModels
         // Frissítjük az oldal tartalmát
         // Ilyenkor a NetworkService-en keresztül frissítjük a Trades elemeinek,
         // vagyis a nyitott ügyleteknek az értékét
-        public async Task Refresh()
+        public async void Refresh()
         {
             var service = new NetworkService();
             var tradeList = await service.GetTradesAsync();
@@ -66,6 +81,25 @@ namespace SmileFX_2022.ViewModels
             {
                 Trades.Add(item);
             }
+        }
+
+
+        // Ügyletek adatainak fájlba írása
+        public async void Save()
+        {
+            var savedContent = JsonConvert.SerializeObject(Trades);
+
+            Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+
+            Windows.Storage.StorageFile sampleFile =
+                await storageFolder.CreateFileAsync("myTrades.txt",
+                    Windows.Storage.CreationCollisionOption.ReplaceExisting);
+
+
+            await Windows.Storage.FileIO.WriteTextAsync(sampleFile, savedContent);
+
+
         }
  
     

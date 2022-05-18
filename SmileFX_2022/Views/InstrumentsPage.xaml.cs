@@ -36,17 +36,13 @@ namespace SmileFX_2022.Views
             InstrumentsVM.NavigateToCreateOrder(inst);
         }
 
-
+        
+        // Navigáció az AddInstrumentPage-re
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             InstrumentsVM.NavigateToAddInstrument();
         }
 
 
-        private void RefreshButton_Click(object sender, RoutedEventArgs e)
-        {
-            InstrumentsVM.Refresh();
-        }
-    
     }
 }

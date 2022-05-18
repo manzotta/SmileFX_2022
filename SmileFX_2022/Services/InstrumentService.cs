@@ -9,7 +9,10 @@ namespace SmileFX_2022.Services
     public class InstrumentService
     {
 
-
+        // Ezen property-n keresztül érjük el a Singleton InstrumentService osztály 
+        // egyetlen példányát
+        // A Singleton Service osztályra mindenekelőtt a különböző ViewModel-ek közötti
+        // adatátadás miatt van szükség
         public static InstrumentService Instance { get; } = new InstrumentService();
 
 
@@ -19,15 +22,20 @@ namespace SmileFX_2022.Services
         };
 
 
+        // Fontos a protected láthatóság, így biztosítjuk hogy
+        // a kezdeti példányosítás után a továbbiakban már
+        // ne lehessen példányosítani az osztályt
         protected InstrumentService() { }
 
 
+        // Instrumentum felvétele a listába
         public void AddInstrument(string name)
         {
             instrumentList.Add(name);
         }
 
 
+        // Az instrumentList tagváltozó Getter metódusa
         public List<string> GetAll()
         {
             return instrumentList;

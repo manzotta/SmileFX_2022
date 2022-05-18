@@ -4,11 +4,13 @@ using SmileFX_2022.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Template10.Mvvm;
 using Windows.UI.Xaml.Navigation;
+using Newtonsoft.Json;
 
 namespace SmileFX_2022.ViewModels 
 {
@@ -34,6 +36,20 @@ namespace SmileFX_2022.ViewModels
             await base.OnNavigatedToAsync(parameter, mode, state);
 
         }
+
+
+        public DelegateCommand RefreshCommand { get; }
+
+        public DelegateCommand SaveCommand { get; }
+
+
+        // Konstruktor, ahol a RefreshCommand metódusreferenciát a Refresh függvénnyel hozzuk létre
+        public InstrumentsPageViewModel()
+        {
+            RefreshCommand = new DelegateCommand(Refresh);
+            SaveCommand = new DelegateCommand(Save);
+        }
+
 
 
         // Az InstrumentsPage-ről az AddInstrumentPage-re navigálunk        
@@ -74,11 +90,44 @@ namespace SmileFX_2022.ViewModels
 
         }
 
-        // Mentéshez
-        // Instruments
-        // aaahttps://stackoverflow.com/questions/49226894/writing-observablecollection-to-json-file
-        // File.WriteAllText(@"./MainDataContext" + ".json", JsonConvert.SerializeObject(DataContext));
+
+        // Instrumentumok adatainak fájlba írása
+        public async void Save()
+        {
+            var savedContent = JsonConvert.SerializeObject(Instruments);
+
+            Windows.Storage.StorageFolder storageFolder =
+                    Windows.Storage.ApplicationData.Current.LocalFolder;
+            
+            Windows.Storage.StorageFile sampleFile =
+                await storageFolder.CreateFileAsync("myInstruments.txt",
+                    Windows.Storage.CreationCollisionOption.ReplaceExisting);
 
 
+            await Windows.Storage.FileIO.WriteTextAsync(sampleFile, savedContent);
+
+
+            //string path = @"c:\work\MyTest.txt";
+            //if (!File.Exists(path))
+            //{
+            //    // Create a file to write to.
+            //    using (StreamWriter sw = File.CreateText(path))
+            //    {
+            //        sw.WriteLine("Hello");
+            //        sw.WriteLine("And");
+            //        sw.WriteLine("Welcome");
+            //    }
+            //}
+
+            //string fileName = @"C:\work\myfile.txt";
+            //FileStream fs = FileStream. File.Create(fileName);
+
+            //StreamWriter File = new StreamWriter("Test_File.txt");
+            //File.Write(savedContent);
+            // System.IO.File.WriteAllText(@"C:\work\myfile.txt", savedContent);
+
+        }
+
+   
     }
 }
