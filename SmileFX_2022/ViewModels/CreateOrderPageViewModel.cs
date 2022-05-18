@@ -79,13 +79,14 @@ namespace SmileFX_2022.ViewModels
         // amit aztán sorosítva átadunk a NetworkService PostOrder függvényének
         private async void CreateOrder()
         {
-            string orderUnits;
+            
+            //string orderUnits;
 
-            if (this.PosType == "Long")
-                orderUnits = "1";
-            else if (this.PosType == "Short")
-                orderUnits = "-1";
-            else return;
+            //if (this.PosType == "Long")
+            //    orderUnits = "1";
+            //else if (this.PosType == "Short")
+            //    orderUnits = "-1";
+            //else return;
 
             OrderContent myOrder = new OrderContent { order = new Order {
                 instrument = $"{BaseCurrency}_{QuoteCurrency}",

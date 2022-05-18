@@ -33,8 +33,9 @@ namespace SmileFX_2022.Views
 
         private void nvSample_Loaded(object sender, RoutedEventArgs e)
         {
-            ContentFrame.Navigate(typeof(InstrumentsPage));
+            // ContentFrame.Navigate(typeof(InstrumentsPage));
             // MainVM.NavigateToInstruments();
+            // ContentFrame.NavigateToType(typeof(InstrumentsPage),sender.ToString,Async);
             
         }
 

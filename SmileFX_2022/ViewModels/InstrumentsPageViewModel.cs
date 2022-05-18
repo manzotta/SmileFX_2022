@@ -11,15 +11,18 @@ using System.Threading.Tasks;
 using Template10.Mvvm;
 using Windows.UI.Xaml.Navigation;
 using Newtonsoft.Json;
+using Template10.Services.NavigationService;
+using Windows.UI.Xaml.Controls;
 
 namespace SmileFX_2022.ViewModels 
 {
-    public class InstrumentsPageViewModel : ViewModelBase
+    public class InstrumentsPageViewModel : ViewModelBase, INavigable
     {
         // Instrumentumokat tároló ObservableCollection
         public ObservableCollection<Instrument> Instruments { get; set; }
             = new ObservableCollection<Instrument>();
 
+        
 
         // Ez a függvény hívódik meg ha az InstrumentsPage-re navigálunk
         // Ekkor töltjük fel instrumentumokkal az Instruments propertyt
