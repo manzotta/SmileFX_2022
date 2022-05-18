@@ -38,16 +38,17 @@ namespace SmileFX_2022.ViewModels
         }
 
 
+        public DelegateCommand SaveCommand { get; }
+        
         public DelegateCommand RefreshCommand { get; }
 
-        public DelegateCommand SaveCommand { get; }
 
-
-        // Konstruktor, ahol a RefreshCommand metódusreferenciát a Refresh függvénnyel hozzuk létre
+        // Konstruktor, ahol a RefreshCommand metódusreferenciát a Refresh függvénnyel hozzuk létre,
+        // a SaveCommand metódusreferenciát pedig a Save függvénnyel hozzuk létre
         public InstrumentsPageViewModel()
         {
-            RefreshCommand = new DelegateCommand(Refresh);
             SaveCommand = new DelegateCommand(Save);
+            RefreshCommand = new DelegateCommand(Refresh);
         }
 
 
