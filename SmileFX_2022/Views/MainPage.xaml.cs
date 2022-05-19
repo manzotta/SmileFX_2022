@@ -47,12 +47,12 @@ namespace SmileFX_2022.Views
             switch (item.Tag.ToString())
             {
                 case "page1":
-                    ContentFrame.Navigate(typeof(InstrumentsPage));
                     MainVM.NavigateToInstruments();
+                    ContentFrame.Navigate(typeof(InstrumentsPage));
                     break;
                 case "page2":
-                    ContentFrame.Navigate(typeof(TradesPage));
                     MainVM.NavigateToTrades();
+                    ContentFrame.Navigate(typeof(TradesPage));
                     break;
             }
         }
